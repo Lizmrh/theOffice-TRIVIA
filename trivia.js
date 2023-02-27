@@ -25,6 +25,54 @@ const Trivia8 = new Trivia ("question8", "How many brothers does Jim Halpert hav
 const Trivia9 = new Trivia ("question9", "How much does Bob Vance bid on a hug from his wife Phyllis?","$1000", "$585")
 const Trivia10 = new Trivia ("question10", "Who did Michael end up taking to Jamaica?","Jan", "Holly")
 
+
+
 questions.innerHTML = Trivia1.question
-optionA.innerHTML = Trivia1.trueAnswer
-optionB.innerHTML = Trivia1.falseAnswer
+if (Math.random() < 0.5){
+    optionA.innerHTML = Trivia1.trueAnswer
+    optionB.innerHTML = Trivia1.falseAnswer
+} else {
+    optionA.innerHTML = Trivia1.falseAnswer
+    optionB.innerHTML = Trivia1.trueAnswer
+}
+
+// let choice = object.addEventListener("click")
+
+function nextQuestionA() {
+    if (optionA.innerHTML === Trivia1.trueAnswer){
+        questions.innerHTML = Trivia2.question
+        if (Math.random() < 0.5){
+            optionA.innerHTML = Trivia2.trueAnswer
+            optionB.innerHTML = Trivia2.falseAnswer
+        } else {
+            optionA.innerHTML = Trivia2.falseAnswer
+            optionB.innerHTML = Trivia2.trueAnswer
+        }
+        
+    } else console.log("game over")
+}
+
+function nextQuestionB() {
+    if (optionB.innerHTML === Trivia1.trueAnswer){
+        questions.innerHTML = Trivia2.question
+        if (Math.random() < 0.5){
+            optionA.innerHTML = Trivia2.trueAnswer
+            optionB.innerHTML = Trivia2.falseAnswer
+        } else {
+            optionA.innerHTML = Trivia2.falseAnswer
+            optionB.innerHTML = Trivia2.trueAnswer
+        }
+        
+    } else console.log("game over")
+}
+
+
+optionA.addEventListener("click", nextQuestionA);
+optionB.addEventListener("click", nextQuestionB);
+
+
+let prova = Trivia1
+
+console.log(Trivia1 ++)
+
+
