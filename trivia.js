@@ -1,7 +1,14 @@
+const questions = document.querySelector('.questions');
+const optionA = document.querySelector('.optionA');
+const optionB = document.querySelector('.optionB');
+console.log(questions)
+console.log(optionA)
+console.log(optionB)
+
 class Trivia {
-    constructor (name, questions, trueAnswer, falseAnswer) {
+    constructor (name, question, trueAnswer, falseAnswer) {
         this.name = name;
-        this.questions = questions;
+        this.question = question;
         this.trueAnswer = trueAnswer;
         this.falseAnswer = falseAnswer
     }
@@ -17,3 +24,7 @@ const Trivia7 = new Trivia ("question7", "Michael and Dwight tried to steal clie
 const Trivia8 = new Trivia ("question8", "How many brothers does Jim Halpert have?","Two", "One")
 const Trivia9 = new Trivia ("question9", "How much does Bob Vance bid on a hug from his wife Phyllis?","$1000", "$585")
 const Trivia10 = new Trivia ("question10", "Who did Michael end up taking to Jamaica?","Jan", "Holly")
+
+questions.innerHTML = Trivia1.question
+optionA.innerHTML = Trivia1.trueAnswer
+optionB.innerHTML = Trivia1.falseAnswer
