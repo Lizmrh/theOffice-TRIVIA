@@ -4,9 +4,12 @@ const optionB = document.querySelector('.optionB');
 console.log(questions)
 console.log(optionA)
 console.log(optionB)
+let gameover = false
+// let qstnsLeft = 10
+let currentQstn = 0
 
 class Trivia {
-    constructor (name, question, trueAnswer, falseAnswer, points) {
+    constructor (name, question, trueAnswer, falseAnswer) {
         this.name = name;
         this.question = question;
         this.trueAnswer = trueAnswer;
@@ -37,60 +40,35 @@ let allQstns = [
     new Trivia ("question10", "Who did Michael end up taking to Jamaica?","Jan", "Holly")
 ]
 
-allQstns.sort((a, b) => {
-    return Math.random() - 0.5;
-})
+// allQstns.sort((a, b) => {
+//     return Math.random() - 0.5;
+// })
 // console.log(allQstns)
+function loadQuestion() {
+    questions.innerHTML = allQstns[currentQstn].question
+    if (Math.random() < 0.5){
+        optionA.innerHTML = allQstns[currentQstn].trueAnswer
+        optionB.innerHTML = allQstns[currentQstn].falseAnswer
+    } else {
+        optionA.innerHTML = allQstns[currentQstn].falseAnswer
+        optionB.innerHTML = allQstns[currentQstn].trueAnswer
+    }
+}
+loadQuestion();
+function checkAnswerOptionA () {
+    if(optionA.innerHTML === allQstns[currentQstn].trueAnswer) {
+        currentQstn++;
+        loadQuestion();
+    } else {
+        gameover = true
+        console.log("game over");
+    }
+}
 
-
+optionA.addEventListener("click", checkAnswerOptionA)
 // iterate through random array,
 
-questions.innerHTML = Trivia1.question
-if (Math.random() < 0.5){
-    optionA.innerHTML = Trivia1.trueAnswer
-    optionB.innerHTML = Trivia1.falseAnswer
-} else {
-    optionA.innerHTML = Trivia1.falseAnswer
-    optionB.innerHTML = Trivia1.trueAnswer
-}
-
-// let choice = object.addEventListener("click")
-
-function nextQuestionA() {
-    if (optionA.innerHTML === Trivia1.trueAnswer){
-        questions.innerHTML = Trivia2.question
-        if (Math.random() < 0.5){
-            optionA.innerHTML = Trivia2.trueAnswer
-            optionB.innerHTML = Trivia2.falseAnswer
-        } else {
-            optionA.innerHTML = Trivia2.falseAnswer
-            optionB.innerHTML = Trivia2.trueAnswer
-        }
-        
-    } else console.log("game over")
-}
-
-function nextQuestionB() {
-    if (optionB.innerHTML === Trivia1.trueAnswer){
-        questions.innerHTML = Trivia2.question
-        if (Math.random() < 0.5){
-            optionA.innerHTML = Trivia2.trueAnswer
-            optionB.innerHTML = Trivia2.falseAnswer
-        } else {
-            optionA.innerHTML = Trivia2.falseAnswer
-            optionB.innerHTML = Trivia2.trueAnswer
-        }
-        
-    } else console.log("game over")
-}
 
 
-optionA.addEventListener("click", nextQuestionA);
-optionB.addEventListener("click", nextQuestionB);
-
-
-let prova = Trivia1
-
-console.log(Trivia1 ++)
 
 
