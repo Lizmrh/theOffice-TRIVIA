@@ -2,11 +2,13 @@ const questions = document.querySelector('.questions');
 const optionA = document.querySelector('.optionA');
 const optionB = document.querySelector('.optionB');
 const score = document.querySelector('.points');
+const freebie = document.querySelector('freebies')
 console.log(questions)
 console.log(optionA)
 console.log(optionB)
 let gameover = false
 let points = 0
+let freebies = 2
 // let qstnsLeft = 10
 let currentQstn = 0
 
@@ -63,10 +65,11 @@ function checkAnswerOptionA () {
         currentQstn++;
         loadQuestion();
     } else {
-        if (points <= 0){
+        if (points <= 0 && freebie < 0){
             gameover = true
             console.log("game over");
-        } else points--;
+        } else 
+        points--;
     }
     score.innerHTML = points;
 }
