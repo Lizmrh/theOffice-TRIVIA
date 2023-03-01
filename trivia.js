@@ -1,10 +1,12 @@
 const questions = document.querySelector('.questions');
 const optionA = document.querySelector('.optionA');
 const optionB = document.querySelector('.optionB');
+const score = document.querySelector('.points');
 console.log(questions)
 console.log(optionA)
 console.log(optionB)
 let gameover = false
+let points = 0
 // let qstnsLeft = 10
 let currentQstn = 0
 
@@ -57,22 +59,30 @@ function loadQuestion() {
 loadQuestion();
 function checkAnswerOptionA () {
     if(optionA.innerHTML === allQstns[currentQstn].trueAnswer) {
+        points++;
         currentQstn++;
         loadQuestion();
     } else {
-        gameover = true
-        console.log("game over");
+        if (points <= 0){
+            gameover = true
+            console.log("game over");
+        } else points--;
     }
+    score.innerHTML = points;
 }
 
 function checkAnswerOptionB () {
     if(optionB.innerHTML === allQstns[currentQstn].trueAnswer) {
+        points++;
         currentQstn++;
         loadQuestion();
     } else {
-        gameover = true
-        console.log("game over");
+        if (points <= 0){
+            gameover = true
+            console.log("game over");
+        } else points--;
     }
+    score.innerHTML = points;
 }
 optionA.addEventListener("click", checkAnswerOptionA)
 optionB.addEventListener("click", checkAnswerOptionB)
