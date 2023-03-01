@@ -65,8 +65,19 @@ function checkAnswerOptionA () {
     }
 }
 
+function checkAnswerOptionB () {
+    if(optionB.innerHTML === allQstns[currentQstn].trueAnswer) {
+        currentQstn++;
+        loadQuestion();
+    } else {
+        gameover = true
+        console.log("game over");
+    }
+}
 optionA.addEventListener("click", checkAnswerOptionA)
-// iterate through random array,
+optionB.addEventListener("click", checkAnswerOptionB)
+
+
 
 
 
