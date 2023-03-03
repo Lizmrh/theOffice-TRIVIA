@@ -5,7 +5,10 @@ USER EXPERIENCE
 3. The player has X amount of seconds to respond and the answer clicked will turn green
 4. When the player wins all the answers, image appears saying YOU ARE THE WINNER.... Or some prompt that says you are the winner, hired as assistant to the assistant of the regional manager
 5. When the incorrect answer is clicked the answer box will turn red and player will lose 1 freebie. 
-When all freebies have been exhausted, there will be a GAME OVER prompt or image
+When all freebies have been exhausted, there will be a GAME OVER prompt or image. After 1st freebie announce game over. After 2nd freebie - announce out of freebies. Fisrt question wrong after freebies are out, Game Over prompt with final score.
+
+- non mostrare -1 in points e freebie
+- assegnare i colori alle risposte e game over
 
 
 Hungry for More

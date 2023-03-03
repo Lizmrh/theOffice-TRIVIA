@@ -1,12 +1,11 @@
 .bg {
-    /* position: fixed;  */
-    top: 0; 
-    left: 0; 
-      
-    /* Preserve aspect ratio */
-    max-width: 100%;
-    max-height: 100%;
-  }
+/* position: fixed;  */
+top: 0; 
+left: 0;    
+/* Preserve aspect ratio */
+  max-width: 100%;
+  max-height: 100%;
+}
 h1 {
 position: absolute;
 width: 477px;
@@ -20,14 +19,17 @@ justify-content: center;
 padding: 2%;
 align-items: center;
 background: #000000;
+border: thick #D9D9D9;
 }
 
 .tracking {
 position: absolute;
 width: 284px;
-height: 125px;
+height: 170px;
 left: 850px;
 top: 58px;
+border-radius: 5%;
+border: solid thick #D9D9D9;
 
 background: #2960cf;
 text-align: left;
@@ -41,20 +43,37 @@ width: 503px;
 height: 135px;
 left: 408px;
 top: 300px;
-text-align: left;
-background: #a7b654;
+text-align: center;
+background: #cbe636;
 border: 1px solid #000000;
 box-shadow: 0px 4px 4px rgba(247, 211, 211, 0.25);
-padding: 2%;
+padding: 0.9rem 1.8rem;
+font-size: 30px;
+font-weight: 700;
 }
+
 .answers {
 position: absolute;
 width: 602px;
 height: 127px;
-left: 250px;
+left: 350px;
 top: 475px;
 display: flex;
 justify-content: space-evenly;
 background: #D9D9D9;
 }
 
+button {
+border-radius: 5%;
+display: inline-block;
+padding: 0.9rem 1.8rem;
+font-size: 16px;
+font-weight: 700;
+}
+button:hover {
+  background-color:#7291e7;
+}
+
+.finale {
+  color: red;
+}
