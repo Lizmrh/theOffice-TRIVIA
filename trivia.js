@@ -9,7 +9,8 @@ const finalScore = document.querySelector('.finale');
 // console.log(optionB)
 
 let gameOver = false
-let points = 0
+let realPoints = 0
+//let point = 0
 let freebies = 2
 // let qstnsLeft = 10
 let currentQstn = 0
@@ -64,40 +65,41 @@ function loadQuestion() {
     }}
 }
 loadQuestion();
+
 function checkAnswerOptionA () {
     if(optionA.innerHTML === allQstns[currentQstn].trueAnswer && gameOver === false) {
-        points = points + allQstns[currentQstn].points;
+        realPoints = realPoints + allQstns[currentQstn].points;
         currentQstn++;
         finalScore.innerHTML = "Good job";
         loadQuestion();
     } else {
         losingConditions();
     }
-    score.innerHTML = points
-    freebie.innerHTML = freebies
+    score.innerHTML = realPoints
+    freebie.innerHTML = Math.max(0, freebies)
 }
 
 function checkAnswerOptionB () {
     if(optionB.innerHTML === allQstns[currentQstn].trueAnswer && gameOver === false) {
-        points = points + allQstns[currentQstn].points;
+        realPoints = realPoints + allQstns[currentQstn].points;
         currentQstn++;
-        finalScore.innerHTML = "Good job";
+        finalScore.innerHTML = `Good job. You got ${allQstns[currentQstn].points} points!`;
         loadQuestion();
     } else {
         losingConditions();
     }
-    score.innerHTML = points
-    freebie.innerHTML = freebies
+    score.innerHTML = realPoints
+    freebie.innerHTML = Math.max(0, freebies)
 }
 
 function losingConditions () {
     if (gameOver === false){
-        points = points - allQstns[currentQstn].points;
+        realPoints = Math.max(0, (realPoints - allQstns[currentQstn].points));
         freebies --;
-            if (freebies < 0){
-                gameOver = true;
-                finalScore.innerHTML = `GAME OVER - Your final score is ${points} points`
-            } else finalScore.innerHTML = `Wrong answer. You lose one freebie and ${allQstns[currentQstn].points} points.`
+        if (freebies < 0){
+            gameOver = true;
+            finalScore.innerHTML = `GAME OVER`
+        } else finalScore.innerHTML = `Wrong answer. You lose 1 freebie and ${allQstns[currentQstn].points} points.`
     }
 }
 optionA.addEventListener("click", checkAnswerOptionA)
