@@ -7,8 +7,9 @@ USER EXPERIENCE
 5. When the incorrect answer is clicked the answer box will turn red and player will lose 1 freebie. 
 When all freebies have been exhausted, there will be a GAME OVER prompt or image. After 1st freebie announce game over. After 2nd freebie - announce out of freebies. Fisrt question wrong after freebies are out, Game Over prompt with final score.
 
-- non mostrare -1 in points e freebie
 - assegnare i colori alle risposte e game over
+- dopo 2 secondi la frase win and luse go awai
+- reset
 
 
 Hungry for More

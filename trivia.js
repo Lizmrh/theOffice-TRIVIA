@@ -53,7 +53,7 @@ let allQstns = [
 // })
 // console.log(allQstns)
 function loadQuestion() {
-    if (gameOver === false){
+    if (gameOver === false && currentQstn < allQstns.length){
         freebie.innerHTML = freebies
         questions.innerHTML = allQstns[currentQstn].question
             if (Math.random() < 0.5){
@@ -66,11 +66,10 @@ function loadQuestion() {
 }
 loadQuestion();
 
-function checkAnswerOptionA () {
+function checkAnswerOptionA() {
     if(optionA.innerHTML === allQstns[currentQstn].trueAnswer && gameOver === false) {
-        realPoints = realPoints + allQstns[currentQstn].points;
-        currentQstn++;
-        finalScore.innerHTML = "Good job";
+        // realPoints = realPoints + allQstns[currentQstn].points;
+        winningConditions();
         loadQuestion();
     } else {
         losingConditions();
@@ -79,11 +78,10 @@ function checkAnswerOptionA () {
     freebie.innerHTML = Math.max(0, freebies)
 }
 
-function checkAnswerOptionB () {
+function checkAnswerOptionB() {
     if(optionB.innerHTML === allQstns[currentQstn].trueAnswer && gameOver === false) {
-        realPoints = realPoints + allQstns[currentQstn].points;
-        currentQstn++;
-        finalScore.innerHTML = `Good job. You got ${allQstns[currentQstn].points} points!`;
+        // realPoints = realPoints + allQstns[currentQstn].points;
+        winningConditions();
         loadQuestion();
     } else {
         losingConditions();
@@ -91,16 +89,28 @@ function checkAnswerOptionB () {
     score.innerHTML = realPoints
     freebie.innerHTML = Math.max(0, freebies)
 }
+// when all questions equal 10 say "you won" and give total points
 
-function losingConditions () {
-    if (gameOver === false){
+
+function losingConditions() {
+    if(gameOver === false){
         realPoints = Math.max(0, (realPoints - allQstns[currentQstn].points));
         freebies --;
-        if (freebies < 0){
+        if(freebies < 0){
             gameOver = true;
             finalScore.innerHTML = `GAME OVER`
         } else finalScore.innerHTML = `Wrong answer. You lose 1 freebie and ${allQstns[currentQstn].points} points.`
     }
 }
+
+function winningConditions() {
+    realPoints = realPoints + allQstns[currentQstn].points;
+    currentQstn++;
+    console.log(currentQstn)
+    if(currentQstn < allQstns.length) {
+        finalScore.innerHTML = `Good job. You got ${allQstns[currentQstn - 1].points} points!`;
+    } else finalScore.innerHTML = `CONGRATS! You've been hired to become Assistant to the Assistant of the Regional Manager!`
+}
+
 optionA.addEventListener("click", checkAnswerOptionA)
 optionB.addEventListener("click", checkAnswerOptionB)
